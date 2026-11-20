@@ -19,3 +19,6 @@ tray_pin_test.png
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# 早期体积实验（临时）
+size_test/
