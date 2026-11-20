@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# 本地产物 / 调试截图
+exe_icon_actual.png
+app_icon_preview.png
+tray_pin_test.png
+
+# 系统
+Thumbs.db
+desktop.ini
+.DS_Store
