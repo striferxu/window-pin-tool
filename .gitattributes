@@ -1,0 +1,21 @@
+# 批处理脚本必须是 CRLF，否则 cmd 解析异常
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# C/C++ 源码与头文件
+*.cpp text eol=lf
+*.h   text eol=lf
+
+# 资源脚本
+*.rc  text eol=crlf
+
+# Python 脚本
+*.py  text eol=lf
+
+# Markdown
+*.md  text eol=lf
+
+# 二进制资源
+*.png binary
+*.ico binary
+*.exe binary

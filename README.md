@@ -11,6 +11,26 @@
 
 ---
 
+## 两个版本：Python 版 / C++ 版
+
+仓库里有两套完整实现，功能对齐，按需选择：
+
+| | Python 版 | **C++ 版（推荐）** |
+| --- | --- | --- |
+| 下载文件 | `WindowPin.exe` | `WindowPinLite.exe`（x64）<br>`WindowPinLite32.exe`（x86） |
+| 体积 | 27.3 MB | **180 KB / 178 KB** |
+| 运行时依赖 | 自带 Python 解释器 | **无**（静态链接，纯系统 DLL） |
+| 启动速度 | 首次 1–3 秒解包 | 瞬间 |
+| 内存占用 | ~30 MB | **~8.6 MB** |
+| 系统支持 | Windows 7+ | Windows 7 SP1+（x86 / x64） |
+| 源码 | `window_pin.py` | [`cpp/`](cpp/) |
+
+> **体积差 150 倍的原因**：Python 版是用 PyInstaller **打包**（把整个 Python 解释器塞进 exe，不是编译成机器码）；C++ 版是用 MSVC **编译**成原生机器码，静态链接 CRT，因此没有运行时依赖。
+
+**C++ 版详细说明、构建方法、自测方法见 [`cpp/README.md`](cpp/README.md)。**
+
+---
+
 ## 效果说明
 
 | 操作 | 结果 |
@@ -22,6 +42,8 @@
 | 托盘图标右键 | 菜单：`更改热键…`、`退出` |
 
 图钉是**状态指示器**，不是需要先「挂钉」的操作入口——一步到位，不需要两步操作。
+
+> 置顶是**单窗口**模式：置顶新窗口时会自动取消上一个。多窗口同时置顶会互相干扰 Z 序，所以刻意做成单窗口。
 
 ---
 
@@ -122,11 +144,21 @@ python test_toggle.py
 
 ```
 window-pin-tool/
-├── window_pin.py          # 主程序（全部逻辑）
-├── test_toggle.py         # 自测脚本
+├── window_pin.py          # Python 版主程序（全部逻辑）
+├── test_toggle.py         # Python 版自测脚本
 ├── app.ico                # 应用图标（红色图钉，多尺寸 16–256）
 ├── requirements.txt
 ├── 刷新图标缓存.bat        # Windows 图标缓存刷新脚本
+├── cpp/                   # C++ / Win32 原生版（体积 180KB，推荐）
+│   ├── windowpin.cpp      #   单文件实现（约 1200 行）
+│   ├── windowpin.rc       #   资源脚本（图标 + 版本信息）
+│   ├── resource.h         #   资源 ID 定义
+│   ├── pin_data.h         #   内嵌的图钉 PNG（自动生成）
+│   ├── make_assets.py     #   图标资源生成脚本
+│   ├── build.bat          #   x64 构建脚本
+│   ├── build32.bat        #   x86 构建脚本
+│   ├── assets/            #   图标资源（PNG / ICO）
+│   └── README.md          #   C++ 版详细说明
 └── README.md
 ```
 

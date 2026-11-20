@@ -1,0 +1,38 @@
+// WindowPinLite 资源脚本
+// 编译：rc /nologo /fo windowpin.res windowpin.rc
+// 图标 = Segoe UI Emoji U+1F4CC（📌）渲染结果，见 make_assets.py
+
+#pragma code_page(65001)
+#include <windows.h>
+#include "resource.h"
+
+IDI_APPICON ICON "assets/windowpin.ico"
+
+// 版本信息
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION    1,1,0,0
+ PRODUCTVERSION 1,1,0,0
+ FILEFLAGSMASK  0x3fL
+ FILEFLAGS      0x0L
+ FILEOS         VOS_NT_WINDOWS32
+ FILETYPE       VFT_APP
+ FILESUBTYPE    VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName",      "WindowPinLite"
+            VALUE "FileDescription",  "WindowPinLite - 窗口置顶小工具"
+            VALUE "FileVersion",      "1.1.0.0"
+            VALUE "InternalName",     "WindowPinLite"
+            VALUE "OriginalFilename", "WindowPinLite.exe"
+            VALUE "ProductName",      "WindowPinLite"
+            VALUE "ProductVersion",   "1.1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
