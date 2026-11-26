@@ -10,10 +10,12 @@ C++ / Win32 重写版，功能与 Python 版完全对齐，体积从 **27.3 MB �
 
 | 文件 | 架构 | 适用系统 | 大小 |
 | --- | --- | --- | --- |
-| `WindowPinLite.exe` | x64 | Windows 7 SP1+ 64 位 | 215 KB |
-| `WindowPinLite32.exe` | x86 | Windows 7 SP1+ 32 位（64 位系统也能跑） | 178 KB |
+| `WindowPinLite-v1.1.0-x64.exe` | x64 | Windows 7 SP1+ 64 位 | 215 KB |
+| `WindowPinLite-v1.1.0-x86.exe` | x86 | Windows 7 SP1+ 32 位（64 位系统也能跑） | 178 KB |
 
-> 如果你的 Win7 是 32 位系统，用 `WindowPinLite32.exe`；64 位系统两个都行，推荐 x64 版。
+> 如果你的 Win7 是 32 位系统，用 `-x86` 版；64 位系统两个都行，推荐 x64 版。
+
+> **命名约定**：从本版起产物文件名统一带版本号。以后升级会以新版本号命名（如 `WindowPinLite-v1.2.0-x64.exe`），旧版本文件保留、不覆盖不删除。
 
 ---
 
