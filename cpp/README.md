@@ -8,7 +8,7 @@ Python 版的 C++ 重写，同样的功能，体积从 **27 MB 降到 180 KB**�
 
 ## 与 Python 版的区别
 
-| | Python 版 (`WindowPin.exe`) | C++ 版 (`WindowPinLite.exe`) |
+| | Python 版 (`WindowPin.exe`) | C++ 版 (`WindowPinLite-v1.1.0-x64.exe`) |
 | --- | --- | --- |
 | 体积 | 27.3 MB | **180 KB**（x64）/ **178 KB**（x86） |
 | 运行时依赖 | 自带 Python 解释器（PyInstaller 打包） | 无（静态链接，纯系统 DLL） |
@@ -40,8 +40,10 @@ Python 版的 C++ 重写，同样的功能，体积从 **27 MB 降到 180 KB**�
 
 | 文件 | 架构 | 适用系统 |
 | --- | --- | --- |
-| `WindowPinLite.exe` | x64 | Windows 7 SP1+ 64 位 |
-| `WindowPinLite32.exe` | x86 | Windows 7 SP1+ 32 位（64 位系统也能跑） |
+| `WindowPinLite-v1.1.0-x64.exe` | x64 | Windows 7 SP1+ 64 位 |
+| `WindowPinLite-v1.1.0-x86.exe` | x86 | Windows 7 SP1+ 32 位（64 位系统也能跑） |
+
+> **文件名带版本号**：每次发版产物都带版本号（如 `-v1.1.0-`），升级后旧文件保留不覆盖、不删除，方便回退对比。版本号唯一来源是 `VERSION.txt`。
 
 双击运行即常驻托盘，无需安装、无需管理员权限。
 
@@ -64,10 +66,16 @@ build.bat debug
 
 > **注意**：构建脚本必须在 **cmd 或 PowerShell** 下运行，**不能在 Git Bash 下运行** —— Git Bash 会把 `/O1` 之类的参数当成路径转义掉。
 
-产物：
-- `WindowPinLite.exe`（x64 Release）
-- `WindowPinLite32.exe`（x86 Release）
+产物（文件名自动带 `VERSION.txt` 里的版本号）：
+- `WindowPinLite-v<版本>-x64.exe`（x64 Release）
+- `WindowPinLite-v<版本>-x86.exe`（x86 Release）
 - `WindowPinDbg.exe`（x64 Debug，带日志）
+
+构建流程会先用 `gen_version.py` 从 `VERSION.txt` 生成 `version.h`，再交给 `rc.exe` 写进 exe 的版本信息，所以**改版本号只需要改 `VERSION.txt` 一处**：
+
+```bash
+echo 1.2.0 > VERSION.txt   # 然后重新 build.bat / build32.bat
+```
 
 编译参数（Release）：
 

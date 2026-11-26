@@ -17,7 +17,7 @@
 
 | | Python 版 | **C++ 版（推荐）** |
 | --- | --- | --- |
-| 下载文件 | `WindowPin.exe` | `WindowPinLite.exe`（x64）<br>`WindowPinLite32.exe`（x86） |
+| 下载文件 | `WindowPin.exe` | `WindowPinLite-v1.1.0-x64.exe`（x64）<br>`WindowPinLite-v1.1.0-x86.exe`（x86） |
 | 体积 | 27.3 MB | **180 KB / 178 KB** |
 | 运行时依赖 | 自带 Python 解释器 | **无**（静态链接，纯系统 DLL） |
 | 启动速度 | 首次 1–3 秒解包 | 瞬间 |
@@ -28,6 +28,8 @@
 > **体积差 150 倍的原因**：Python 版是用 PyInstaller **打包**（把整个 Python 解释器塞进 exe，不是编译成机器码）；C++ 版是用 MSVC **编译**成原生机器码，静态链接 CRT，因此没有运行时依赖。
 
 **C++ 版详细说明、构建方法、自测方法见 [`cpp/README.md`](cpp/README.md)。**
+
+> **产物命名约定**：所有 exe 文件名都带版本号（如 `WindowPinLite-v1.1.0-x64.exe`）。升级后旧版本文件保留、不覆盖不删除，方便回退和对比。C++ 版的版本号只需改 `cpp/VERSION.txt` 一处，构建脚本会自动同步到文件名和 exe 属性。
 
 ---
 
@@ -155,8 +157,10 @@ window-pin-tool/
 │   ├── resource.h         #   资源 ID 定义
 │   ├── pin_data.h         #   内嵌的图钉 PNG（自动生成）
 │   ├── make_assets.py     #   图标资源生成脚本
-│   ├── build.bat          #   x64 构建脚本
-│   ├── build32.bat        #   x86 构建脚本
+│   ├── VERSION.txt        #   版本号唯一来源（改这里即可）
+│   ├── gen_version.py     #   由 VERSION.txt 生成 version.h
+│   ├── build.bat          #   x64 构建脚本（产物自动带版本号）
+│   ├── build32.bat        #   x86 构建脚本（产物自动带版本号）
 │   ├── assets/            #   图标资源（PNG / ICO）
 │   └── README.md          #   C++ 版详细说明
 └── README.md

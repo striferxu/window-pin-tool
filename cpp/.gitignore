@@ -17,3 +17,6 @@ _*.txt
 # 系统
 Thumbs.db
 desktop.ini
+
+# 自动生成的版本头（由 VERSION.txt 派生）
+version.h

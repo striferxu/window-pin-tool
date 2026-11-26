@@ -12,6 +12,9 @@
 # Python 脚本
 *.py  text eol=lf
 
+# 版本号文件（保持 LF，供 cmd for /f 与 Python 读取）
+VERSION.txt text eol=lf
+
 # Markdown
 *.md  text eol=lf
 
